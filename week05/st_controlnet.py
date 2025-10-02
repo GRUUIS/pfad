@@ -20,7 +20,7 @@ if "pipeline" not in st.session_state:
 def do_canny(image):
     image = np.array(image)
     # get canny image
-    image = cv2.Canny(image, 100, 200)
+    image = cv2.Canny(image, 150, 300)
     image = image[:, :, None]
     image = np.concatenate([image, image, image], axis=2)
     canny_image = Image.fromarray(image)

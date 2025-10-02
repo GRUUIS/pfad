@@ -20,6 +20,6 @@ while True:
     
     # Generate the image, for options see:
     # https://huggingface.co/docs/diffusers/en/api/pipelines/stable_diffusion/text2img
-    images = pipe(prompt, num_inference_steps=20).images
+    images = pipe(prompt, num_inference_steps=200).images
     
     images[0].show()
