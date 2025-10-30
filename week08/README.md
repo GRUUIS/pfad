@@ -14,6 +14,11 @@ Install the required packages:
 pip install -r requirements.txt
 ```
 
+**Note for Emotion Detection:**
+- The first run of `9_emotion_detection.py` will download the EmotiEffLib model (requires internet)
+- Emotion recognition models are cached locally for subsequent runs
+- If EmotiEffLib installation fails, install PyTorch first: `pip install torch torchvision`
+
 ## Examples
 
 ### 1. Face Detection (`1_face_detection.py`)
@@ -124,6 +129,31 @@ pip install -r requirements.txt
 - Real-time performance metrics
 - Modular activation/deactivation
 
+### 9. Emotion Detection (`9_emotion_detection.py`)
+- Real-time emotion recognition using MediaPipe + EmotiEffLib
+- Combines face detection with advanced emotion analysis
+- Displays emotion probabilities and confidence scores
+- Tracks emotion history and dominant emotions
+- Color-coded emotion visualization
+
+**Key Features:**
+- 8 emotion categories (happy, sad, angry, surprised, fearful, disgusted, neutral, contempt)
+- Real-time emotion confidence scores
+- Emotion history tracking
+- Color-coded bounding boxes
+- Statistical summary of detected emotions
+- Fallback to basic face detection if emotion recognition fails
+
+**Supported Emotions:**
+- 😊 Happy (Green)
+- 😢 Sad (Blue)
+- 😠 Angry (Red)
+- 😲 Surprised (Yellow)
+- 😨 Fearful (Purple)
+- 🤢 Disgusted (Teal)
+- 😐 Neutral (White)
+- 😤 Contempt (Olive)
+
 ## 📷 Camera Setup
 
 ### First Time Setup
@@ -205,6 +235,9 @@ These examples can be used as building blocks for:
 - **Gaming**: Motion-based game controls
 - **Medical Applications**: Posture analysis and rehabilitation
 - **Beauty Applications**: Face mesh for makeup filters and facial analysis
+- **Mental Health**: Emotion tracking and mood analysis
+- **Customer Experience**: Emotion-based feedback systems
+- **Education**: Engagement and attention monitoring
 
 ## Performance Notes
 
@@ -216,6 +249,7 @@ These examples can be used as building blocks for:
 - **Holistic Model**: ~10-25 FPS (combines all features)
 - **Selfie Segmentation**: ~20-35 FPS depending on background complexity
 - **Multi-Detection**: Varies based on active modules
+- **Emotion Detection**: ~15-25 FPS (includes face detection + emotion analysis)
 
 ## Further Reading
 
