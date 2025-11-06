@@ -15,16 +15,13 @@ services:
       - ollama:/root/.ollama
     ports:
       - 11434:11434
-  weaviate:
-    <<: *x-gpu
-    image: cr.weaviate.io/semitechnologies/weaviate:1.26.4
-    volumes:
-        - weaviate_data:/var/lib/weaviate
-    environment:
-      PERSISTENCE_DATA_PATH: '/var/lib/weaviate'
+  qdrant:
+    image: qdrant/qdrant
+    restart: unless-stopped
     ports:
-      - 8080:8080
-      - 50051:50051
+      - 6333:6333
+    volumes:
+      - qdrant_storage:/qdrant/storage
 
 volumes:
   ollama:
@@ -34,4 +31,4 @@ volumes:
     #
     # external: true
     # name: pfad_ollama
-  weaviate_data:
+  qdrant_storage:

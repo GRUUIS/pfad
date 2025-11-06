@@ -1,7 +1,7 @@
-from weaviate_store import vectorstore
-from langchain.tools.retriever import create_retriever_tool
-from langgraph.prebuilt import create_react_agent
-from langchain_ollama import ChatOllama
+from qdrant_store import vectorstore
+from langchain_classic.tools.retriever import create_retriever_tool
+from langchain.agents import create_agent
+from langchain_openai import ChatOpenAI
 
 retriever = vectorstore.as_retriever(search_kwargs={"k": 2})
 
@@ -12,8 +12,8 @@ retriever_tool = create_retriever_tool(
 )
 
 tools = [retriever_tool]
-llm = ChatOllama(model="llama3.2", base_url="http://localhost:11434")
-graph = create_react_agent(llm, tools=tools)
+llm = ChatOpenAI(model="qwen/qwen3-4b-2507", base_url="http://localhost:1234/v1", api_key="ollama")
+graph = create_agent(llm, tools=tools)
 config = {"configurable": {"thread_id": "1"}}
 
 if __name__ == "__main__":
